@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package proto;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+option java_multiple_files = true;
+option java_package = "iochti.process";
+option java_outer_classname = "DataProcessProto";
+
+service DataProcess {
+  rpc Process (ProcessData) returns (google.protobuf.Empty) {}
+}
+
+message ProcessData {
+  string id = 1;
+  string dataTypeId = 2;
+  string thingGroupId = 3;
+  google.protobuf.Timestamp createdAt = 4;
+  string payload = 5;
+}

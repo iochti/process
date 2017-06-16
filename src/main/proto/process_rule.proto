@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package proto;
+
+import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+option java_package = "iochti.processRule";
+option java_outer_classname = "ProcessRuleProto";
+
+service ProcessRuleService {
+  rpc FindByThingGroupId (IdRequest) returns (stream ProcessRule) {}
+  rpc GetProcessRule (IdRequest) returns (ProcessRule) {}
+  rpc CreateProcessRule (ProcessRule) returns (ProcessRule) {}
+  rpc UpdateProcessRule (ProcessRule) returns (ProcessRule) {}
+  rpc DeleteProcessRule (IdRequest) returns (google.protobuf.Empty) {}
+}
+
+message ProcessRule {
+  string id = 1;
+  string name = 2;
+  string ruleTypeId = 3;
+  string thingGroupId = 4;
+  string parameters = 5;
+}
+
+message IdRequest {
+  string id = 1;
+}
